@@ -1,0 +1,31 @@
+{
+  "name": "front",
+  "version": "0.0.1",
+  "description": "구성\r express + angular2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimjinmoo/js_front.git"
+  },
+  "keywords": [
+    "front"
+  ],
+  "author": "jm,sa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimjinmoo/js_front/issues"
+  },
+  "homepage": "https://github.com/kimjinmoo/js_front#readme",
+  "dependencies": {
+    "async": "^2.4.1",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "serve-favicon": "^2.4.3"
+  }
+}
