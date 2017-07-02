@@ -33,6 +33,8 @@ http://localhost:3000
 #라우팅
 http://localhost:3000/sample/gretting
 
+#Angular 
+http://localhost:3000/sample/sample.html
     
     
 
