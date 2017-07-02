@@ -22,17 +22,13 @@
     </nav>
 </header>
 <body>
-<div>
-    <p>My 기본 문법 : {{ 5 + 5 }}</p>
-</div>
 <div ng-app="myApp" ng-controller="myCtrl">
-
+    <p>My 기본 문법 : {{ 5 + 5 }}</p>
     First Name: <input type="text" ng-model="firstName"><br>
     Last Name: <input type="text" ng-model="lastName"><br>
     <br>
     Full Name: {{firstName + " " + lastName}}
 
 </div>
-
 </body>
 </html>
