@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <script src="/assets/libs/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="./sampleController.js"></script>
+</head>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/sample/sample.html">Sample List</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/sample/sample.html"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl" id="popupContainer">
+    <div class="container">
+        <h2>Sample List</h2>
+        <ul class="list-group" ng-repeat="p in list">
+            <li class="list-group-item" ng-click="detail(p.seq)">{{p.title}}<span class="badge">{{p.readCount}}</span></li>
+        </ul>
+    </div>
+    <div style="visibility: hidden">
+        <div class="md-dialog-container" id="myDialog">
+            <md-dialog layout-padding>
+                <h2>Pre-Rendered Dialog</h2>
+                <p>
+                    This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
+                    template on each opening.
+                    <br/><br/>
+                    The Dialog Element is a static element in the DOM, which is just visually hidden.<br/>
+                    Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
+                    we restore the element back into its old DOM position.
+                </p>
+            </md-dialog>
+        </div>
+    </div>
+</div>
+<script>
+    var app = angular.module('myApp');
+    app.controller('myCtrl', function($scope, $http){
+        $scope.list = [];
+
+        $http.get('/sample/list').then(function(data){
+            console.log(JSON.stringify(data));
+            $scope.list = data.data;
+        });
+        $scope.detail = function(seq) {
+            $http.get('/sample/list/'+seq).then(function(data){
+                console.log(JSON.stringify(data));
+            });
+        }
+    });
+</script>
+</body>
+</html>
