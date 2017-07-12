@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <script src="/assets/libs/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="./sampleController.js"></script>
 </head>
 <header>
@@ -14,7 +15,7 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/sample/sample.html"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="/sample/list.html"><i class="fa fa-home"></i> Home</a></li>
                 <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
                 <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
             </ul>
@@ -29,35 +30,91 @@
             <li class="list-group-item" ng-click="detail(p.seq)">{{p.title}}<span class="badge">{{p.readCount}}</span></li>
         </ul>
     </div>
-    <div style="visibility: hidden">
-        <div class="md-dialog-container" id="myDialog">
-            <md-dialog layout-padding>
-                <h2>Pre-Rendered Dialog</h2>
-                <p>
-                    This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
-                    template on each opening.
-                    <br/><br/>
-                    The Dialog Element is a static element in the DOM, which is just visually hidden.<br/>
-                    Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
-                    we restore the element back into its old DOM position.
-                </p>
-            </md-dialog>
+    <a ng-click="detail()">detail test</a>
+    <a ng-click="modify()">modify</a>
+    <a ng-click="remove()">remove</a>
+    <a ng-click="add()">add</a>
+    <test-btn>테스트</test-btn>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
+
 <script>
     var app = angular.module('myApp');
-    app.controller('myCtrl', function($scope, $http){
+    // 컨트롤러
+    app.controller('myCtrl', ['$scope', '$http', 'log', 'flog', function($scope, $http, log, flog) {
         $scope.list = [];
 
-        $http.get('/sample/list').then(function(data){
+        // 리스트를 불러온다.
+        $http.get('/sample/list').then(function (data) {
             console.log(JSON.stringify(data));
             $scope.list = data.data;
         });
-        $scope.detail = function(seq) {
-            $http.get('/sample/list/'+seq).then(function(data){
+        // 상세 보기
+        $scope.detail = function (seq) {
+            $http.get('/sample/list/' + seq).then(function (data) {
                 console.log(JSON.stringify(data));
             });
+        };
+        // 수정
+        $scope.modify = function () {
+            log.debug("modify");
+            flog.error("modify");
+        }
+        // 추가
+        $scope.add = function () {
+            log.debug("add");
+            flog.error("add");
+        }
+        // 삭제
+        $scope.remove = function () {
+            log.debug("remove");
+            flog.error("remove");
+        }
+    }]);
+    app.directive("testBtn",function() {
+        return {
+            restrict: 'E', //A 속성, E 요소, C 클레스, M 주석
+            replace: false,
+            transclude: false,
+            template: '<a href="" class="btn btn-primary" ng-click="click()">버튼</a>',
+            controller: function($scope, $element, $attrs, $transclude) {
+                $scope.click = function click(){
+                    console.log("click");
+                }
+            }
+        }
+    });
+    // 서비스
+    app.service('log', function () {
+        this.debug = function (str) {
+            console.log(str);
+        };
+    });
+
+    app.factory('flog', function () {
+        return {
+            error : function(str) {
+                console.log("e : "+str);
+            }
         }
     });
 </script>
