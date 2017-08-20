@@ -1,4 +1,4 @@
-#express + angular2 
+#express + angularJS 
 
 최초 클론 이후 작업<br>
 node install<br>
