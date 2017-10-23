@@ -1,7 +1,7 @@
 #express + angularJS 
 
 최초 클론 이후 작업<br>
-node install<br>
+npm install<br>
 
 #설치 pakcage
 npm install --save body-parser cookie-parser debug express morgan serve-favicon
