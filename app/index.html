@@ -30,10 +30,6 @@
                 <a class="nav-link" href="#">메뉴2</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search" id="search_text">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search" v-on:click="onSearch">검색</button>
-        </form>
         <form>
             <button type="button" class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#login">로그인</button>
         </form>
@@ -160,20 +156,7 @@
                 this.message = this.message.split('').reverse().join('')
             }
         }
-    })
-    var btn_search = new Vue({
-        el : '#search',
-        methods: {
-            onSearch : function() {
-                var text = $("#search_text").val();
-                if(text.length < 1) {
-                    alert("검색어를 입력하여 주십시오.");
-                } else {
-                    alert("검색합니다.");
-                }
-            }
-        }
-    })
+    });
 </script>
 </body>
 </html>
