@@ -48,5 +48,10 @@ http://localhost:3000/sample/gretting
 #Angular 
 http://localhost:3000/sample/sample.html
     
-    
+#forver 백그라운드
+<pre>
+npm install forever -g
+forever start app.js
+forever stop app.js 
+</pre>   
 
