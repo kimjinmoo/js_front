@@ -21,10 +21,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">메뉴1<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" v:click="goJenkins">Jenkins-CI환경<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">메뉴2</a>
@@ -117,23 +117,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 <script type="text/javascript">
     var app = new Vue({
+        el : "#menu",
+        method : {
+            goJenkins : function() {
+                window.open("http://13.125.38.35:9000");
+            }
+        }
+    });
+    var app = new Vue({
         el: '#app',
         data: {
             message: 'Hello Vue!'
         }
-    })
+    });
     var app2 = new Vue({
         el: '#app-2',
         data: {
             message: 'You loaded this page on ' + new Date().toLocaleString()
         }
-    })
+    });
     var app3 = new Vue({
         el: '#app-3',
         data: {
             seen: true
         }
-    })
+    });
     var app4 = new Vue({
         el: '#app-4',
         data: {
@@ -143,7 +151,7 @@
                 { text: 'Build something awesome' }
             ]
         }
-    })
+    });
     var app5 = new Vue({
         el: '#app-5',
         data: {

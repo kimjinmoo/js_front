@@ -6,7 +6,7 @@
  * auth : jm
  */
 //정적 변수
-const SERVER_PORT = 80;
+const SERVER_PORT = 1100;
 
 // 의존성 설정
 const express = require('express'); // express framework [라우터, 라우트, 미들웨어]
