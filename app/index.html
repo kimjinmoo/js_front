@@ -16,7 +16,7 @@
 <body class="container bg">
 <div></div>
 <nav class="navbar navbar-expand-md navbar-dark ">
-    <a class="navbar-brand" href="#">스터디_페이지</a>
+    <a class="navbar-brand" href="#">Study</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,10 +24,10 @@
     <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" v:click="goJenkins">Jenkins-CI환경<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" v-on:click="goJenkins">Jenkins-CI<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">메뉴2</a>
+                <a class="nav-link" href="#">SpringBoot API 문서(Swagger)</a>
             </li>
         </ul>
         <form>
@@ -118,7 +118,7 @@
 <script type="text/javascript">
     var app = new Vue({
         el : "#menu",
-        method : {
+        methods : {
             goJenkins : function() {
                 window.open("http://13.125.38.35:9000");
             }
