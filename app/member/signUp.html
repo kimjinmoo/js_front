@@ -190,6 +190,7 @@
                 <input type="password" class="form-control" id="password_re" placeholder="비밀번호를 다시 입력하여 주십시오." ref="re_password">
             </div>
             <div class="form-group">
+                <button type="button" class="btn btn-success pull-right" v-on:click="onHome">뒤로가기</button>
                 <button type="button" class="btn btn-success pull-right" v-on:click="onRegister">가입완료</button>
             </div>
         </div>
@@ -203,6 +204,9 @@
         methods : {
             onRegister : function() {
                 signUp(this.$refs.email.value, this.$refs.password.value, this.$refs.re_password.value);
+            },
+            onHome : function() {
+                location.href = "/";
             }
         }
     })
