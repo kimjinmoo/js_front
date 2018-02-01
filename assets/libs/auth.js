@@ -11,9 +11,15 @@ firebase.initializeApp(config);
 var loginUtil = {
      isLogin : false,
      getUser : null,
+     checkedPage : function() {
+         loginUtil.init(function(){
+             if(loginUtil.isLogin) location.href = "/";
+         })
+     },
      init : function(isAuthCallback, isNoAuthCallback) {
          firebase.auth().onAuthStateChanged(function(user) {
              if (user) {
+                 console.log(user);
                  //set UserInfo
                  loginUtil.isLogin = true;
                  loginUtil.getUser = user;
@@ -57,20 +63,29 @@ var loginUtil = {
              if(!loginUtil.commonUtil.checkPassword(password)) {
                  return false;
              }
-
-             firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-                 /**
-                  *   var errorCode = error.code; 에러코드
-                  *   var errorMessage = error.message; 에러메세지
-                  */
-                 if(typeof failCallback === "function") {
-                     failCallback(error);
-                 }
-             }).then(function(data){
-                if(typeof successCallback === "function") {
-                    successCallback(data)
-                }
-             });
+             // set 인증 지속성
+             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+                 .then(function() {
+                     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                         /**
+                          *   var errorCode = error.code; 에러코드
+                          *   var errorMessage = error.message; 에러메세지
+                          */
+                         if(typeof failCallback === "function") {
+                             failCallback(error);
+                         }
+                     }).then(function(data){
+                         if(typeof successCallback === "function") {
+                             successCallback(data)
+                         }
+                     });
+                     return firebase.auth().signInWithEmailAndPassword(email, password);
+                 })
+                 .catch(function(error) {
+                     // Handle Errors here.
+                     var errorCode = error.code;
+                     var errorMessage = error.message;
+                 });
          }
      },
     signOut : function(successCallback, failCallback) {
