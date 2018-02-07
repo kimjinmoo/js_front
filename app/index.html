@@ -32,8 +32,8 @@
             <div id="login_btn_view" style="display:none;">
                 <button type="button" class="btn btn-outline-info my-2 my-sm-0" data-toggle="modal" data-target="#commonLoginPopup">로그인</button>
             </div>
-            <div id="login_user_view" style="display:none;">
-                <span id="login_text"></span>
+            <div id="login_user_view" style="display:none;" class="btn-group">
+                <span id="login_text" class="align-middle"></span>
                 <button type="button" class="btn btn-outline-info my-2 my-sm-0" v-on:click="logOut">로그아웃</button>
             </div>
         </form>
@@ -127,7 +127,7 @@
         loginUtil.init(function(obj){
             $("#login_btn_view").hide();
             $("#login_user_view").show();
-            $("#login_text").html("<h5 class='text-white'>"+obj.email+"</h5>");
+            $("#login_text").html("<span class='nav-link text-white'>"+obj.email+"</span>");
             headMenu.menuShow();
         }, function(){
             $("#login_user_view").hide();
