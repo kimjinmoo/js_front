@@ -33,7 +33,8 @@ var loginUtil = {
                  var providerData = user.providerData;
                  // [START_EXCLUDE]
                  if (!emailVerified) {
-                     // email 체크
+                     alert("이메일 인증 후 로그인 하여 주십시요.");
+                     loginUtil.signOut();
                  }
                  // [END_EXCLUDE]
                  if(typeof isAuthCallback === "function") {
