@@ -55,6 +55,12 @@
                     <a class="nav-link" href="#" v-on:click="gotoApiServer">SpringBoot API 문서(Swagger)</a>
                 </li>
                 <li class="nav-item" v-bind:class="{'is-collapsed' : !collapsed}">
+                    <a class="nav-link" href="#" v-on:click="gotoWebSocket">WebSocket(spring websocket+stomp+sockjs)</a>
+                </li>
+                <li class="nav-item" v-bind:class="{'is-collapsed' : !collapsed}">
+                    <a class="nav-link" href="#" v-on:click="gotoCrawling">Crawling - 근방영화검색</a>
+                </li>
+                <li class="nav-item" v-bind:class="{'is-collapsed' : !collapsed}">
                     <a class="nav-link" href="#">DOCKER</a>
                 </li>
             </ul>
@@ -199,6 +205,7 @@
         data : {
             jenkinsUrl :  "http://13.125.38.35:9000",
             apiServer : "http://13.125.166.228/swagger-ui.html",
+            webSocket : "http://13.125.166.228",
             collapsed : false
         },
         methods : {
@@ -207,6 +214,12 @@
             },
             gotoApiServer : function() {
                 window.open(this.apiServer);
+            },
+            gotoWebSocket : function() {
+              window.open(this.webSocket);
+            },
+            gotoCrawling : function() {
+
             },
             logOut : function() {
                 loginUtil.signOut();
