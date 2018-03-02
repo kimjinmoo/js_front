@@ -3,8 +3,8 @@ var headMenu = new Vue({
     el : "#app",
     data : {
         jenkinsUrl :  "http://13.125.38.35:9000",
-        apiServer : "http://13.125.166.228/swagger-ui.html",
-        webSocket : "http://13.125.166.228",
+        apiServer : "http://13.124.113.142/swagger-ui.html",
+        webSocket : "http://13.124.113.142",
         slack : "https://iustudy.slack.com",
         isLogin : false,
         userId : "iukim21c"
