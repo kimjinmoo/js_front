@@ -6,6 +6,7 @@ var headMenu = new Vue({
         apiServer : "http://13.124.113.142/swagger-ui.html",
         webSocket : "http://13.124.113.142",
         slack : "https://iustudy.slack.com",
+      sighInUrl : "/member/signUp.html",
         isLogin : false,
         userId : "iukim21c"
     },
